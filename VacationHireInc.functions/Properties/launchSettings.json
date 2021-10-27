@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VacationHireInc.functions": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\maria\\source\\repos\\VacationHireInc\\VacationHireInc.functions"
+    }
+  }
+}

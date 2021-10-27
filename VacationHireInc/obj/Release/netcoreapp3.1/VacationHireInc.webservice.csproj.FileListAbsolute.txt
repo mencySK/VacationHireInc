@@ -1,0 +1,1 @@
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc\obj\Release\netcoreapp3.1\VacationHireInc.webservice.csprojAssemblyReference.cache

@@ -1,0 +1,3 @@
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Release\netcoreapp3.1\VacationHireInc.framework.csprojAssemblyReference.cache
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Release\netcoreapp3.1\VacationHireInc.framework.AssemblyInfoInputs.cache
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Release\netcoreapp3.1\VacationHireInc.framework.AssemblyInfo.cs

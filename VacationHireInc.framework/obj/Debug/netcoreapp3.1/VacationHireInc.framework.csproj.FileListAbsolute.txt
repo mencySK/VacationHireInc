@@ -1,0 +1,13 @@
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\bin\Debug\netcoreapp3.1\VacationHireInc.framework.deps.json
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\bin\Debug\netcoreapp3.1\VacationHireInc.framework.runtimeconfig.json
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\bin\Debug\netcoreapp3.1\VacationHireInc.framework.runtimeconfig.dev.json
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\bin\Debug\netcoreapp3.1\VacationHireInc.framework.dll
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\bin\Debug\netcoreapp3.1\VacationHireInc.framework.pdb
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\bin\Debug\netcoreapp3.1\VacationHireInc.data.dll
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\bin\Debug\netcoreapp3.1\VacationHireInc.data.pdb
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Debug\netcoreapp3.1\VacationHireInc.framework.csprojAssemblyReference.cache
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Debug\netcoreapp3.1\VacationHireInc.framework.AssemblyInfoInputs.cache
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Debug\netcoreapp3.1\VacationHireInc.framework.AssemblyInfo.cs
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Debug\netcoreapp3.1\VacationHireInc.framework.csproj.CopyComplete
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Debug\netcoreapp3.1\VacationHireInc.framework.dll
+C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.framework\obj\Debug\netcoreapp3.1\VacationHireInc.framework.pdb
