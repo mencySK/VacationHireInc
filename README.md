@@ -31,6 +31,12 @@ Parameters: 1) VehicleID - GUID - required
 
 Ex: https://localhost:xxxxx/Order/FinishOrder?VehicleID=A11C2FBB-682C-47AA-A88D-5624BC635F25&StartDate=2021-10-25 12:00:00&EndDate=2021-10-27 12:00:00&Damage=Aripa dreapta zgariata&GasolineFilled=true
 
+In order to test FinishOrder, the order must be Processing, the status would be updated to Processing by the function if the booking has started so i manually updated an order for you to test:
+Please replace the above parameters with:
+VehicleID:  A11C2FBB-682C-47AA-A88D-5624BC635F25
+StartDate: 2021-10-28 13:00:00.000
+EndDate: 2021-10-30 12:00:00.000
+
 5. /Order/GetOrders - to get a list of orders/bookings
 
 Ex: https://localhost:xxxxx/Order/GetOrders
