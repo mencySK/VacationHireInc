@@ -4,7 +4,7 @@ API doc:
 
 1. /Vehicle/GetVehicles - to get a list of vehicles
 
-Ex: http://vacationhireinc.azurewebsites.net/Vehicle/GetVehicles
+Ex: https://vacationhireinc.azurewebsites.net/Vehicle/GetVehicles
 
 2. /Order/NewOrder - to create a new order
 Parameters: 1) VehicleID - GUID - required (vehicle you wish to hire)
@@ -13,14 +13,14 @@ Parameters: 1) VehicleID - GUID - required (vehicle you wish to hire)
             4) CustomerName - string - required
             5) CustomerPhoneNumber - string - required
             
-Ex: http://vacationhireinc.azurewebsites.net/Order/NewOrder?VehicleID=385175d5-48f1-4653-8513-c4c6acaecd76&StartDate=2021-11-28 13:00:00&EndDate=2021-11-30 12:00:00&CustomerName=Marian&CustomerPhoneNumber=07914618716
+Ex: https://vacationhireinc.azurewebsites.net/Order/NewOrder?VehicleID=385175d5-48f1-4653-8513-c4c6acaecd76&StartDate=2021-11-28 13:00:00&EndDate=2021-11-30 12:00:00&CustomerName=Marian&CustomerPhoneNumber=07914618716
 
 3. /Order/CancelOrder - to cancel a booked order 
 Parameters: 1) VehicleID - GUID - required (will be used to identify the booking/order and cancel it)
             2) StartDate - DateTime - required (will be used to identify the booking/order and cancel it)
             3) EndDate - DateTime - required (will be used to identify the booking/order and cancel it)
 
-Ex: http://vacationhireinc.azurewebsites.net/Order/CancelOrder?VehicleID=385175d5-48f1-4653-8513-c4c6acaecd76&StartDate=2021-11-28 13:00:00&EndDate=2021-11-30 12:00:00
+Ex: https://vacationhireinc.azurewebsites.net/Order/CancelOrder?VehicleID=385175d5-48f1-4653-8513-c4c6acaecd76&StartDate=2021-11-28 13:00:00&EndDate=2021-11-30 12:00:00
 
 4. /Order/FinishOrder - To finish an order/booking
 Parameters: 1) VehicleID - GUID - required
@@ -29,7 +29,7 @@ Parameters: 1) VehicleID - GUID - required
             4) Damage - string
             5)GasolineFilled - bool (false if left empty)
 
-Ex: http://vacationhireinc.azurewebsites.net/Order/FinishOrder?VehicleID=A11C2FBB-682C-47AA-A88D-5624BC635F25&StartDate=2021-10-25 12:00:00&EndDate=2021-10-27 12:00:00&Damage=Aripa dreapta zgariata&GasolineFilled=true
+Ex: https://vacationhireinc.azurewebsites.net/Order/FinishOrder?VehicleID=A11C2FBB-682C-47AA-A88D-5624BC635F25&StartDate=2021-10-25 12:00:00&EndDate=2021-10-27 12:00:00&Damage=Aripa dreapta zgariata&GasolineFilled=true
 
 In order to test FinishOrder, the order must be Processing, the status would be updated to Processing by the function if the booking has started so i manually updated an order for you to test:
 Please replace the above parameters with:
@@ -39,7 +39,7 @@ EndDate: 2021-10-30 12:00:00.000
 
 5. /Order/GetOrders - to get a list of orders/bookings
 
-Ex: http://vacationhireinc.azurewebsites.net/Order/GetOrders
+Ex: https://vacationhireinc.azurewebsites.net/Order/GetOrders
 
 
 Function "UpdateOrdersStatus"
