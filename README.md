@@ -63,3 +63,5 @@ Enums:
     }
     
     Given the way the database and objects were created, it would be easy to extend to boats, hotels, etc. as the VehicleID in the Order table is not required and there could be a RoomID too. 
+
+I did not make use of currencylayer.com API as i did not need it but i would have created a JSON object matching the currencylayer API response and deserialize it.
