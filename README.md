@@ -1,3 +1,6 @@
+UPDATE: Azure has disabled my subscription without notice and you won't be able to access the host.
+I sent a support request and i am waiting for their reply.
+
 # VacationHireInc using API.
 
 API doc:
