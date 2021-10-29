@@ -1,5 +1,3 @@
-C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.functions\bin\Debug\netcoreapp3.1\VacationHireInc.data.exe
-C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.functions\bin\Debug\netcoreapp3.1\VacationHireInc.framework.exe
 C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.functions\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.functions\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\maria\source\repos\VacationHireInc\VacationHireInc.functions\bin\Debug\netcoreapp3.1\appsettings.local.json
