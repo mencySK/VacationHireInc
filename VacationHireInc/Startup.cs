@@ -67,9 +67,7 @@ namespace VacationHireInc.webservice
 
             ICredentialsService credentialsService = new CredentialsService(this.Configuration);
 
-            string connectionString = string.Empty;
-            var getConnectionString = Task.Run(async () => connectionString = await credentialsService.GetCredentials(settings.ConnectionStringLocation));
-            getConnectionString.Wait();
+            string connectionString = "Server=tcp:vacationhiredev.database.windows.net,1433;Initial Catalog=VacationHireDev;Persist Security Info=False;User ID=vacationhireadmin;Password=s3cur3password!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
             services.AddDbContext<Repository>(options => options.UseSqlServer(connectionString));
         }
