@@ -7,6 +7,7 @@ using VacationHireInc.webservice.JsonResponse;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 /// <summary>
 /// Log unhandled errors
@@ -21,7 +22,7 @@ public class ErrorController : Controller
     private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(ErrorController));
 
     /// <summary>
-    /// Log unhandled errors
+    /// Log unhandled errors        
     /// </summary>
     /// <returns>return message to user</returns>
     public JsonResult Error()
@@ -30,6 +31,6 @@ public class ErrorController : Controller
 
         Log.Error("An error has occured at path: " + exceptionHandlerPathFeature.Path, exceptionHandlerPathFeature.Error);
 
-         return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { "An error has occured" } });
+         return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { "An error has occured" }, HttpStatusCode = HttpStatusCode.InternalServerError });
     }
 } 

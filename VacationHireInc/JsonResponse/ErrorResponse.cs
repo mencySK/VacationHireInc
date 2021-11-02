@@ -5,6 +5,7 @@
 namespace VacationHireInc.webservice.JsonResponse
 {
     using System.Collections.Generic;
+    using System.Net;
 
     /// <summary>
     /// Represents an error returned by the application
@@ -26,5 +27,7 @@ namespace VacationHireInc.webservice.JsonResponse
                 return false;
             }
         }
+
+        public HttpStatusCode HttpStatusCode { get; set; }
     }
 }

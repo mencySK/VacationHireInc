@@ -46,5 +46,13 @@ namespace VacationHireInc.framework
                 return this.config.GetValue<string>("Values:AzureVault");
             }
         }
+
+        public string CurrencyLayerApiKey
+        {
+            get
+            {
+                return this.config.GetValue<string>("Values:CurrencyLayerApiKey");
+            }
+        }
     }
 }

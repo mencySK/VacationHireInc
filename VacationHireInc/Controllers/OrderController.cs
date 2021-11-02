@@ -7,8 +7,12 @@ namespace VacationHireInc.Controllers
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Newtonsoft.Json;
     using VacationHireInc.data.Entities;
+    using VacationHireInc.framework;
     using VacationHireInc.framework.Interfaces;
     using VacationHireInc.webservice.JsonResponse;
     using VacationHireInc.webservice.Models;
@@ -29,13 +33,16 @@ namespace VacationHireInc.Controllers
         /// </summary>
         private IOrderService orderService;
 
+        private AppSettings appSettings;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderController"/> class.
         /// </summary>
         /// <param name="orderService">an instance of the order service</param>
-        public OrderController(IOrderService orderService)
+        public OrderController(IOrderService orderService, IConfiguration config)
         {
             this.orderService = orderService;
+            this.appSettings = new AppSettings(config);
         }
 
         /// <summary>
@@ -43,7 +50,6 @@ namespace VacationHireInc.Controllers
         /// </summary>
         /// <param name="model">model used for creating a new order</param>
         /// <returns>an appropriate message regarding the status of the request in JSON format</returns>
-        [HttpGet("NewOrder")]
         [HttpPost("NewOrder")]
         public JsonResult NewOrder(OrderModel model)
         {
@@ -67,7 +73,7 @@ namespace VacationHireInc.Controllers
             if (!ModelState.IsValid)
             {
                 Log.InfoFormat("Invalid order for vehicleID {0}", model.VehicleID);
-                return this.Json(new ErrorResponse() { ErrorMessages = ModelState.Values.SelectMany(x => x.Errors).ToList().Select(x => x.ErrorMessage).ToList() });
+                return this.Json(new ErrorResponse() { ErrorMessages = ModelState.Values.SelectMany(x => x.Errors).ToList().Select(x => x.ErrorMessage).ToList(), HttpStatusCode = HttpStatusCode.UnprocessableEntity });
             }
 
             string message = string.Empty;
@@ -76,7 +82,7 @@ namespace VacationHireInc.Controllers
             DateTime startDate = model.SubmittedStartDate ?? DateTime.Now;
             DateTime endDate = model.SubmittedEndDate ?? DateTime.Now;
 
-            bool availability = this.orderService.InsertOrder(model.VehicleID, startDate, endDate, model.CustomerName, model.CustomerPhoneNumber, out message);
+            bool availability = this.orderService.InsertOrder(model, out message);
 
             if (availability)
             {
@@ -84,7 +90,7 @@ namespace VacationHireInc.Controllers
             }
             else
             {
-                return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { message } });
+                return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { message }, HttpStatusCode = HttpStatusCode.OK });
             }
         }
 
@@ -93,7 +99,6 @@ namespace VacationHireInc.Controllers
         /// </summary>
         /// <param name="model">model used for cancelling an order</param>
         /// <returns>an appropriate message regarding the status of the request in JSON format</returns>
-        [HttpGet("CancelOrder")]
         [HttpPost("CancelOrder")]
         public JsonResult CancelOrder(OrderModel model)
         {
@@ -106,7 +111,7 @@ namespace VacationHireInc.Controllers
             if (!ModelState.IsValid)
             {
                 Log.InfoFormat("Invalid request for finishing order with vehicleID {0}", model.VehicleID);
-                return this.Json(new ErrorResponse() { ErrorMessages = ModelState.Values.SelectMany(x => x.Errors).ToList().Select(x => x.ErrorMessage).ToList() });
+                return this.Json(new ErrorResponse() { ErrorMessages = ModelState.Values.SelectMany(x => x.Errors).ToList().Select(x => x.ErrorMessage).ToList(), HttpStatusCode = HttpStatusCode.UnprocessableEntity });
             }
 
             string message = string.Empty;
@@ -115,7 +120,7 @@ namespace VacationHireInc.Controllers
             DateTime startDate = model.SubmittedStartDate ?? DateTime.Now;
             DateTime endDate = model.SubmittedEndDate ?? DateTime.Now;
 
-            bool orderFound = this.orderService.CancelOrder(model.VehicleID, startDate, endDate, out message);
+            bool orderFound = this.orderService.CancelOrder(model, out message);
 
             if (orderFound)
             {
@@ -123,7 +128,7 @@ namespace VacationHireInc.Controllers
             }
             else
             {
-                return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { message } });
+                return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { message }, HttpStatusCode = HttpStatusCode.OK });
             }
         }
 
@@ -132,7 +137,6 @@ namespace VacationHireInc.Controllers
         /// </summary>
         /// <param name="model">model used for finishing an order</param>
         /// <returns>an appropriate message regarding the status of the request in JSON format</returns>
-        [HttpGet("FinishOrder")]
         [HttpPost("FinishOrder")]
         public JsonResult FinishOrder(OrderModel model)
         {
@@ -145,7 +149,7 @@ namespace VacationHireInc.Controllers
             if (!ModelState.IsValid)
             {
                 Log.InfoFormat("Invalid request for cancelling order with vehicleID {0}", model.VehicleID);
-                return this.Json(new ErrorResponse() { ErrorMessages = ModelState.Values.SelectMany(x => x.Errors).ToList().Select(x => x.ErrorMessage).ToList() });
+                return this.Json(new ErrorResponse() { ErrorMessages = ModelState.Values.SelectMany(x => x.Errors).ToList().Select(x => x.ErrorMessage).ToList(), HttpStatusCode = HttpStatusCode.UnprocessableEntity });
             }
 
             string message = string.Empty;
@@ -154,7 +158,7 @@ namespace VacationHireInc.Controllers
             DateTime startDate = model.SubmittedStartDate ?? DateTime.Now;
             DateTime endDate = model.SubmittedEndDate ?? DateTime.Now;
 
-            bool orderFound = this.orderService.FinishOrder(model.VehicleID, startDate, endDate, model.Damage, model.GasolineFilled, out message);
+            bool orderFound = this.orderService.FinishOrder(model, out message);
 
             if (orderFound)
             {
@@ -162,7 +166,7 @@ namespace VacationHireInc.Controllers
             }
             else
             {
-                return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { message } });
+                return this.Json(new ErrorResponse() { ErrorMessages = new List<string> { message }, HttpStatusCode = HttpStatusCode.OK });
             }
         }
 
@@ -171,12 +175,24 @@ namespace VacationHireInc.Controllers
         /// </summary>
         /// <returns>a list of orders in JSON format</returns>
         [HttpGet("GetOrders")]
-        [HttpPost("GetOrders")]
         public JsonResult GetOrders()
         {
             List<HireOrder> hireOrders = this.orderService.GetHireOrders();
 
             return this.Json(new GetOrdersResponse() { HireOrders = hireOrders });
+        }
+
+        /// <summary>
+        /// LiveCurrencyLayer
+        /// </summary>
+        /// <returns>LiveCurrencyLayer</returns>
+        [HttpGet("LiveCurrencyLayer")]
+        public JsonResult LiveCurrencyLayer()
+        {
+            string url = string.Format("http://api.currencylayer.com/live?access_key={0}", this.appSettings.CurrencyLayerApiKey);
+            CurrencyLayerResponse paymentResponse = JsonConvert.DeserializeObject<CurrencyLayerResponse>(this.orderService.GetWebRequest(url).Result);
+
+            return this.Json(paymentResponse);
         }
     }
 }

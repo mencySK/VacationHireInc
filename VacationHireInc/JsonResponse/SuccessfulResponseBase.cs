@@ -2,6 +2,8 @@
 // Copyright (c) 2021 All Rights Reserved
 // </copyright>
 
+using System.Net;
+
 namespace VacationHireInc.webservice.JsonResponse
 {
     /// <summary>
@@ -17,6 +19,14 @@ namespace VacationHireInc.webservice.JsonResponse
             get
             {
                 return true;
+            }
+        }
+
+        public HttpStatusCode HttpStatusCode
+        {
+            get
+            {
+                return HttpStatusCode.OK;
             }
         }
     }

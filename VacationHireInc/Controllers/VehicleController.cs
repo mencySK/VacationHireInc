@@ -4,14 +4,11 @@
 
 namespace VacationHireInc.Controllers
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Microsoft.AspNetCore.Mvc;
     using VacationHireInc.data.Entities;
     using VacationHireInc.framework.Interfaces;
     using VacationHireInc.webservice.JsonResponse;
-    using VacationHireInc.webservice.Models;
 
     /// <summary>
     /// Handles calls made to the service to manipulate orders
@@ -43,7 +40,6 @@ namespace VacationHireInc.Controllers
         /// </summary>
         /// <returns>a list of orders in JSON format</returns>
         [HttpGet("GetVehicles")]
-        [HttpPost("GetVehicles")]
         public JsonResult GetVehicles()
         {
             List<Vehicle> vehicles = this.vehicleService.GetVehicles();
