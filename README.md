@@ -1,5 +1,9 @@
+UPDATE 2: My azure subscription has been resumed so now the hosted version can be used.
+
 UPDATE: Azure has disabled my subscription without notice and you won't be able to access the host.
 I sent a support request and i am waiting for their reply.
+
+However i pushed a new version using RAW connection string to DB so you will be able to test on localhost.
 
 # VacationHireInc using API.
 
